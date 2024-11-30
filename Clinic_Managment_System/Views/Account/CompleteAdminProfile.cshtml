@@ -1,0 +1,27 @@
+﻿@model Clinic_Managment_System.Viewmodel.AdminProfileViewModel
+
+<h2>Complete Admin Profile</h2>
+
+<form asp-action="CompleteAdminProfile" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="ApplicationUserId" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" required />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Profile</button>
+</form>

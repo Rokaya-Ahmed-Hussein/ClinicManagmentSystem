@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DAL.Data.Appointment>
+
+<h2>View Appointments</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Doctor.Name</td>
+                <td>@appointment.SelectedDay.ToString("g")</td>
+                <td>@appointment.SelectedTimeSlot.ToString("g")</td>
+                <td>@appointment.ReasonForVisit</td>
+                <td>
+                    <form asp-action="ChangeAppointmentStatus" method="post">
+                        @Html.HiddenFor(m => appointment.AppointmentID)
+                        @Html.DropDownListFor(
+                                 m => appointment.Status,
+                                 new SelectList((Dictionary<string, string>)ViewBag.StatusOptions, "Key", "Value", appointment.Status.ToString()),
+                                 new { @class = "form-control" }
+                                 )
+                        <button type="submit" class="btn btn-primary">Change Status</button>
+                    </form>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Appointments", new { id = appointment.AppointmentID })" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

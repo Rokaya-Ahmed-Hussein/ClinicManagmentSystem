@@ -1,0 +1,112 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.appointment-container {
+    background-color: #0d1b2a;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    color: white;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.appointment-form, .appointment-info {
+    padding: 20px;
+}
+
+.appointment-form {
+    flex: 2;
+}
+
+.appointment-info {
+    background-color: #1b3a57;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+    .appointment-info h3 {
+        border-bottom: 2px solid #00bfae;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #00bfae;
+    }
+
+    .appointment-info p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .appointment-info .info-label {
+        font-weight: bold;
+        color: #00bfae;
+    }
+
+    .appointment-info .info-value {
+        color: #e0e0e0;
+        white-space: pre-wrap; /* Allows wrapping of text within the info-value */
+        overflow-wrap: break-word; /* Ensures that long words break and fit within the container */
+        max-width: 100%; /* Ensure the content does not overflow */
+        box-sizing: border-box;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+}
+
+    input::placeholder, textarea::placeholder {
+        color: #ccc;
+    }
+
+textarea {
+    resize: none;
+    max-height: 80px; /* Limits height to 4 rows */
+    overflow-y: auto; /* Adds scrollbar if text exceeds */
+    box-sizing: border-box;
+}
+
+.btn-appointment {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+    .btn-appointment:hover {
+        background-color: #0056b3;
+    }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.appointment-form, .appointment-info {
+    box-sizing: border-box;
+}

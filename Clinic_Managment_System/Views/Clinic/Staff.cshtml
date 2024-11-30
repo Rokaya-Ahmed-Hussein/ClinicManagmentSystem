@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DAL.Data.Staff>
+
+<h2>Staff Management</h2>
+
+<a href="@Url.Action("AddStaff", "Clinic")" class="btn btn-success">Add Staff</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var staff in Model)
+        {
+            <tr>
+                <td>@staff.Name</td>
+                <td>@staff.Email</td>
+                <td>@staff.PhoneNumber</td>
+                <td>
+                    <a href="@Url.Action("EditStaff", "Clinic", new { id = staff.StaffID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteStaff", "Clinic", new { id = staff.StaffID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

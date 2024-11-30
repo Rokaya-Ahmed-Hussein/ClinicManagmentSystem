@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DAL.Data.Doctor>
+
+<h2>Doctors Management</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialty</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.Name</td>
+                <td>@doctor.Specialty</td>
+                <td>
+                    <a href="@Url.Action("DeleteDoctor", "Clinic", new { id = doctor.DoctorID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

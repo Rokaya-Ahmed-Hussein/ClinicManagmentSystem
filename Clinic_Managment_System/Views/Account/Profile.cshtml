@@ -1,0 +1,50 @@
+﻿@using Clinic_Managment_System.Viewmodel
+@using DAL.Data
+@model UserProfileViewModel
+
+<h2>User Profile</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    @if (Model.Role == Roles.Admin)
+                    {
+                        <h4 class="card-title">Admin Details</h4>
+                        <p class="card-text"><strong>Name:</strong> @Model.AdminName</p>
+                        <h2 class="card-title">@Model.FullName</h2>
+                        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                    }
+                    else if (Model.Role == Roles.Doctor)
+                    {
+                        <h4 class="card-title">Doctor Details</h4>
+                        <h2 class="card-title">@Model.FullName</h2>
+                        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                        <p class="card-text"><strong>Specialty:</strong> @Model.Specialty</p>
+                    }
+                    else if (Model.Role == Roles.Clinic)
+                    {
+                        <h4 class="card-title">Clinic Details</h4>
+                        <h2 class="card-title">@Model.FullName</h2>
+                        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                        <p class="card-text"><strong>Location:</strong> @Model.Location</p>
+                    }
+                    else if (Model.Role == Roles.Patient)
+                    {
+                        <h4 class="card-title">Patient Details</h4>
+                        <h2 class="card-title">@Model.FullName</h2>
+                        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                        <p class="card-text"><strong>National ID:</strong> @Model.NationalID</p>
+                        <p class="card-text"><strong>Gender:</strong> @Model.Gender</p>
+                        <p class="card-text"><strong>Age:</strong> @Model.Age</p>
+                        <p class="card-text"><strong>Medical History:</strong> @Model.MedicalHistory</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

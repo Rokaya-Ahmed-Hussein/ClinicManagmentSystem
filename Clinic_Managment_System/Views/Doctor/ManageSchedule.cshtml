@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DAL.Data.DoctorSchedule>
+
+<h2>Manage Schedule</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Day</th>
+                <th>Time Slot</th>
+                <th>Max Patients</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in Model)
+            {
+                <tr>
+                    <td>@schedule.ScheduleDay</td>
+                    <td>@schedule.TimeSlot</td>
+                    <td>@schedule.MaxPatients</td>
+                    <td>@schedule.Price.ToString("C")</td> 
+                    <td>
+                        <button class="btn btn-warning" onclick="window.location.href='@Url.Action("EditSchedule", new { id = schedule.DoctorScheduleID })'">Edit</button>
+                        <form asp-action="DeleteSchedule" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@schedule.DoctorScheduleID" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this schedule?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<button class="btn btn-primary" onclick="window.location.href='@Url.Action("CreateSchedule")'">Create Schedule</button>
+<style>.table th, .table td {
+    vertical-align: middle; 
+}
+
+.btn {
+    margin-right: 5px; 
+}
+
+
+    .btn {
+        width: 100%; 
+        margin-bottom: 10px; 
+    }
+
+</style>

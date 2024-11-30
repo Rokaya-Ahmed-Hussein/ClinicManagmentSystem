@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "_LayoutAuthenticated";
+}
+
+@{
+    ViewData["Title"] = "Manage Appointments";
+}
+
+@model List<DAL.Data.Appointment>
+
+<link rel="stylesheet" href="~/css/appoitmentdata.css" asp-append-version="true" />
+
+<div class="container">
+    <h2>Manage Appointments</h2>
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="appointment-card">
+                <div class="card-header">
+                    Appointment Details
+                </div>
+                <div class="card-body">
+                    <p><strong>Patient Name:</strong> <span>@item.Doctor.Name</span></p>
+                    <p><strong>Appointment Date:</strong> <span>@item.SelectedDay.ToString()</span></p>
+                    <p><strong>Appointment Time:</strong> <span>@item.SelectedTimeSlot.ToString()</span></p> 
+                    <p><strong>Reason for Visit:</strong></p>
+                    <p class="reason-for-visit">@item.ReasonForVisit</p>
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="appointment-status">
+                            @ViewBag.Statuses[item.Status.ToString()]
+                        </span>
+                    </p>
+
+                    <form asp-action="ChangeAppointmentStatus" method="post" style="display:inline;">
+                        <input type="hidden" name="appointmentId" value="@item.AppointmentID" /> 
+                        
+                        @Html.DropDownList("newStatus",
+                                 new SelectList(ViewBag.Statuses, "Key", "Value", item.Status.ToString()),
+                                 new { @class = "form-control", required = "required" })
+
+                        <button type="submit" class="btn btn-primary btn-sm">Update Status</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No appointments found.</p>
+    }
+</div>

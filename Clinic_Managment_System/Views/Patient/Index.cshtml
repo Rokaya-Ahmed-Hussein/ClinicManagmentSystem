@@ -1,0 +1,118 @@
+﻿@model Clinic_Managment_System.Viewmodel.PatientAppointmentOverviewViewModel
+@{
+    ViewData["Title"] = "Patient Dashboard";
+}
+@{
+    Layout = "_LayoutAuthenticated";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Dashboard - Clinic Management System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/cliniclay.css" />
+</head>
+<body>
+    <!-- Carousel Section -->
+    <div id="AllCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('@Url.Content("~/images/hospital1.jpg")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Make an Appointment</h5>
+                    <p>You could choose the doctor and the Date you want for the Appointment .</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('@Url.Content("~/images/hospital2.jpg")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>View Your Appointments</h5>
+                    <p>Keep track of your  appointments.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('@Url.Content("~/images/hospital3.jpg")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Track Appointment Status</h5>
+                    <p>You could Track the status of your appointments - Scheduled, Missed, or Completed.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#AllCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#AllCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+<!-- Use  at the top of your Razor view -->
+<section class="container">
+    <div class="row text-center mb-5">
+        <div class="col-md-4">
+            <div class="overview-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Total Appointments</h4>
+                <p>@Model.TotalAppointments</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="overview-card">
+                <i class="fas fa-check-circle"></i>
+                <h4>Completed Appointments</h4>
+                <p>@Model.CompletedAppointments</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="overview-card">
+                <i class="fas fa-times-circle"></i>
+                <h4>Missed Appointments</h4>
+                <p>@Model.MissedAppointments</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <h2>Patient Appointments</h2>
+                    <p>View your Appointments and track the Status of your appointments.</p>
+                    <a href="@Url.Action("Details", "Patient")" class="btn btn-primary">View Appointments</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="~/images/doctor2.jpg" alt="Doctors" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="~/images/appointments.png" alt="Staff" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <h2>Make an Appointment</h2>
+                    <p>You could choose the doctor and the Date you want for the Appointment.</p>
+                    <a href="@Url.Action("Appoitment", "Patient")" class="btn btn-secondary">Make an Appointment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

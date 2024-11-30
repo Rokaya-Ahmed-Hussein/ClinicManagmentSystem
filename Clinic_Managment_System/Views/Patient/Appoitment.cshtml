@@ -1,0 +1,154 @@
+﻿
+@{
+    Layout = "_LayoutAuthenticated";
+}
+@model BLL.Viewmodel.AppointmentViewModel
+
+@{
+    ViewData["Title"] = "Make Appointment";
+}
+
+<h2>Make an Appointment</h2>
+
+<form asp-action="AddAppointment" method="post">
+    <div class="form-group">
+        <label asp-for="SelectedDoctorId">Specialty</label>
+        <select id="specialty" class="form-control" name="SelectedSpecialty">
+            <option value="">Select Specialty</option>
+            @foreach (var specialty in ViewBag.Specialties as List<SelectListItem>)
+            {
+                <option value="@specialty.Value">@specialty.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedDoctorId">Doctor</label>
+        <select id="doctor" class="form-control" name="SelectedDoctorId">
+            <option value="">Select Doctor</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedClinicId">Clinic</label>
+        <select id="clinic" class="form-control" name="SelectedClinicId">
+            <option value="">Select Clinic</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="schedule">Schedule</label>
+        <select id="schedule" class="form-control" name="SelectedDay">
+            <option value="">Select Day</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="timeSlot">Time Slot</label>
+        <select id="timeSlot" class="form-control" name="SelectedTimeSlot">
+            <option value="">Select Time Slot</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReasonForVisit">Reason for Visit</label>
+        <input asp-for="ReasonForVisit" class="form-control" />
+        <span asp-validation-for="ReasonForVisit" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Get doctors by specialty
+            $('#specialty').change(function () {
+                var specialtyId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetDoctorsBySpecialty", "Patient")',
+                    type: 'GET',
+                    data: { specialty: specialtyId },
+                    success: function (data) {
+                        var doctorDropdown = $('#doctor');
+                        doctorDropdown.empty();
+                        doctorDropdown.append('<option value="">Select Doctor</option>');
+                        $.each(data, function (i, doctor) {
+                            doctorDropdown.append('<option value="' + doctor.doctorID + '">' + doctor.name + '</option>');
+                        });
+
+                        // Clear dependent dropdowns after specialty change
+                        $('#clinic').empty().append('<option value="">Select Clinic</option>');
+                        $('#schedule').empty().append('<option value="">Select Day</option>');
+                        $('#timeSlot').empty().append('<option value="">Select Time Slot</option>');
+                    }
+                });
+            });
+
+            // Get clinics by doctor
+            $('#doctor').change(function () {
+                var doctorId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetClincsByDoctor", "Patient")',
+                    type: 'GET',
+                    data: { doctorId: doctorId },
+                    success: function (data) {
+                        var clinicDropdown = $('#clinic');
+                        clinicDropdown.empty();
+                        clinicDropdown.append('<option value="">Select Clinic</option>');
+                        $.each(data.clinics, function (i, clinic) {
+                            clinicDropdown.append('<option value="' + clinic.clinicID + '">' + clinic.name + '</option>');
+                        });
+
+                        // Clear dependent dropdowns after doctor change
+                        $('#schedule').empty().append('<option value="">Select Day</option>');
+                        $('#timeSlot').empty().append('<option value="">Select Time Slot</option>');
+                    }
+                });
+            });
+
+            // Get available days for the selected doctor and clinic
+            $('#clinic').change(function () {
+                var clinicId = $(this).val();
+                var doctorId = $('#doctor').val();
+                $.ajax({
+                    url: '@Url.Action("GetDaysByDoctorAndClinic", "Patient")',
+                    type: 'GET',
+                    data: { clinicId: clinicId, doctorId: doctorId },
+                    success: function (data) {
+                        var scheduleDropdown = $('#schedule');
+                        scheduleDropdown.empty();
+                        scheduleDropdown.append('<option value="">Select Day</option>');
+                        $.each(data, function (i, schedule) {
+                            scheduleDropdown.append('<option value="' + schedule.day + '">' + schedule.day + '</option>'); // Display friendly names
+                        });
+
+                        // Clear dependent dropdown
+                        $('#timeSlot').empty().append('<option value="">Select Time Slot</option>');
+                    }
+                });
+            });
+
+            // Get time slots for the selected day, doctor, and clinic
+            $('#schedule').change(function () {
+                var scheduleDay = $(this).val();
+                var doctorId = $('#doctor').val();
+                var clinicId = $('#clinic').val();
+                $.ajax({
+                    url: '@Url.Action("GetTimeSlotsByDoctorAndClinicAndDay", "Patient")',
+                    type: 'GET',
+                    data: { clinicId: clinicId, doctorId: doctorId, day: scheduleDay },
+                    success: function (data) {
+                        var timeSlotDropdown = $('#timeSlot');
+                        timeSlotDropdown.empty();
+                        timeSlotDropdown.append('<option value="">Select Time Slot</option>');
+                        $.each(data, function (i, timeSlot) {
+                            timeSlotDropdown.append('<option value="' + timeSlot.timeSlot + '">' + timeSlot.timeSlot + ' - Price: ' + timeSlot.price + '</option>'); // Display friendly names
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

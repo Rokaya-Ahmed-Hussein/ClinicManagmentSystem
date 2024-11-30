@@ -1,0 +1,328 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+
+}
+.containerssss {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 50px;
+    display: block;
+}
+
+
+
+.nav {
+    background-color: #03346E;
+    color: white;
+}
+
+.navbar-brand img {
+    width: max-content;
+}
+
+nav {
+    background-color: #03346E;
+}
+
+#anchortext {
+    color: aliceblue;
+}
+
+.navbar-brand img {
+    width: max-content;
+}
+
+.menu {
+    background-color: #f8f9fa;
+}
+
+    .menu .heading span {
+        font-size: 1.2rem;
+        color: #6c757d;
+    }
+
+    .menu h2 {
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #343a40;
+    }
+
+    .menu .box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .menu .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .menu .box-img img {
+        border-radius: 0.25rem;
+        transition: transform 0.3s ease;
+    }
+
+        .menu .box-img img:hover {
+            transform: scale(1.05);
+        }
+
+    .menu .card-title {
+        font-size: 1.25rem;
+        color: #343a40;
+        margin-bottom: 0.5rem;
+    }
+
+    .menu .card-text {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .menu .btn-outline-primary {
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .menu .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+/* About Section */
+.about {
+    background-color: #f8f9fa;
+    /* Light background color */
+    padding: 3rem 0;
+    /* Vertical padding */
+}
+
+.about-img img {
+    transition: transform 0.3s ease;
+}
+
+    .about-img img:hover {
+        transform: scale(1.05);
+        /* Slight zoom effect on hover */
+    }
+
+.about-text span {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #343a40;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #495057;
+    line-height: 1.6;
+}
+
+.about-text .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .about-text .btn-primary:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }
+
+
+
+
+/* Home Section */
+.home {
+    background-color: #f0f4f8;
+    /* Light background color for the homepage */
+    padding: 5rem 0;
+    /* Vertical padding for the section */
+}
+
+    .home .hero-img img {
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+        .home .hero-img img:hover {
+            transform: scale(1.05);
+            /* Slight zoom effect on hover */
+        }
+
+    .home h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #343a40;
+    }
+
+    .home p {
+        font-size: 1.25rem;
+        color: #495057;
+    }
+
+    .home .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        border-radius: 0.25rem;
+        background-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .home .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+/* Services Section */
+.services {
+    background-color: #ffffff;
+    padding: 5rem 0;
+}
+
+    .services .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .services .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .services .service-card i {
+            color: #007bff;
+        }
+
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 0;
+}
+
+    .testimonials .testimonial {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .testimonials .testimonial:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .testimonials cite {
+        display: block;
+        font-style: normal;
+        color: #6c757d;
+        margin-top: 1rem;
+    }
+
+/* Navbar */
+nav {
+    background-color: #03346E;
+}
+
+#anchortext {
+    color: aliceblue;
+}
+
+.navbar-brand img {
+    width: max-content;
+}
+
+/* Hero Carousel */
+.hero-carousel {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+    .hero-carousel .carousel-item {
+        height: 60vh; /* Adjust height for your needs */
+    }
+
+        .hero-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            object-position: center; /* Centers the image within the carousel item */
+            box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow above the image */
+        }
+
+    .hero-carousel .carousel-caption {
+        bottom: 20%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+        text-align: center; /* Center text in the caption */
+    }
+
+        .hero-carousel .carousel-caption h5, .hero-carousel .carousel-caption p {
+            color: #fff;
+        }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #007bff;
+    border-radius: 50%;
+}
+
+#footer {
+    line-height: unset;
+    position: relative;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #03346E;
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+    footer .social-links a {
+        color: #fff;
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    footer .contact-info p, footer .quick-links a {
+        color: #fff;
+        margin-bottom: 0.5rem;
+        text-decoration: none;
+    }
+
+        footer .quick-links a:hover {
+            text-decoration: underline;
+        }
+
+@media (min-width: 768px) {
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    footer .contact-info, footer .quick-links {
+        text-align: left;
+    }
+}
+
+
+/* Adjust icon size or spacing if needed */
+.nav-link i, .btn i {
+    margin-right: 0.5rem; /* Adds spacing between icon and text */
+    font-size: 1rem; /* Adjust icon size */
+}
+
+.btn i {
+    margin-right: 0.3rem; /* Adjust spacing for button icon */
+}

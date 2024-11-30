@@ -1,0 +1,32 @@
+﻿@model DAL.Data.DoctorSchedule
+
+<h2>Edit Schedule</h2>
+
+<form asp-action="EditSchedule" method="post">
+    <input type="hidden" asp-for="DoctorScheduleID" />
+    <input type="hidden" asp-for="DoctorID" /> 
+
+
+    <div class="form-group">
+        <label asp-for="ScheduleDay"></label>
+        @Html.DropDownList("ScheduleDay", new SelectList(ViewBag.Days, "Key", "Value", Model.ScheduleDay.ToString()), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TimeSlot"></label>
+        @Html.DropDownList("TimeSlot", new SelectList(ViewBag.TimeSlots, "Key", "Value", Model.TimeSlot.ToString()), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MaxPatients"></label>
+        <input asp-for="MaxPatients" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" type="number" step="0.01" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Schedule</button>
+    <a asp-action="ManageSchedule" class="btn btn-secondary">Cancel</a>
+</form>

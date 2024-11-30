@@ -1,0 +1,49 @@
+﻿.container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the cards to wrap if there's not enough space */
+    justify-content: space-around; /* Distributes cards evenly */
+    gap: 20px; /* Adds space between the cards */
+    margin-top: 20px;
+}
+
+.appointment-card {
+    width: 300px; /* Fixed width for each card */
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .appointment-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .appointment-card .card-header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        border-radius: 15px 15px 0 0;
+        padding: 15px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .appointment-card .card-body {
+        font-size: 1.1rem;
+    }
+
+        .appointment-card .card-body p {
+            margin: 10px 0;
+        }
+
+.appointment-status {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.reason-for-visit {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

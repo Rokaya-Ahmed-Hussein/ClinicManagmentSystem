@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Clinic Dashboard";
+}
+@{
+    Layout = "_LayoutAuthenticated";
+}
+@model Clinic_Managment_System.Viewmodel.ClinicOverviewViewModel
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Dashboard - Clinic Management System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/cliniclay.css"/>
+</head>
+<body>
+    <!-- Carousel Section -->
+    <div id="AllCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('@Url.Content("~/images/clinic1.png")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Manage Your Clinic Efficiently</h5>
+                    <p>Track appointments, doctors, and staff easily.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('@Url.Content("~/images/clinic2.png")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Track Appointments</h5>
+                    <p>Stay updated on appointments linked to your doctors.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('@Url.Content("~/images/clinic3.png")');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Grow Your Team</h5>
+                    <p>Easily add new doctors and staff to your clinic.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#AllCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#AllCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Clinic Overview Section -->
+    <section class="container">
+        <div class="row text-center mb-5">
+            <div class="col-md-4">
+                <div class="overview-card">
+                    <i class="fas fa-user-md"></i>
+                    <h4>Total Doctors</h4>
+                    <p>@Model.TotalDoctors</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="overview-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Total Staff</h4>
+                    <p>@Model.TotalStaff</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="overview-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Total Appointments</h4>
+                    <p>@Model.TotalAppointments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <h2>Your Doctors</h2>
+                    <p>Link with qualified doctors to facilitate a wide range of specialties within your clinic. Manage and oversee their appointments with ease.</p>
+                    <a href="Doctors/Index" class="btn btn-primary">View All Doctors</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="~/images/about.png" alt="Doctors" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="~/images/img3.png" alt="Staff" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <h2>Your Staff</h2>
+                    <p>Add and manage your staff members easily from this section. Ensure your clinic operates smoothly with an efficient team.</p>
+                    <a href="Staff/Index" class="btn btn-secondary">View All Staff</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

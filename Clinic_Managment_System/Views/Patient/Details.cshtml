@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Appointment Dashboard";
+}
+@{
+    Layout = "_LayoutAuthenticated";
+}
+@model List<DAL.Data.Appointment>
+
+<link rel="stylesheet" href="~/css/appoitmentdata.css" asp-append-version="true" />
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="appointment-card">
+            <div class="card-header">
+                Appointment Details
+            </div>
+            <div class="card-body">
+                <p><strong>Patient Name:</strong> <span>@item.Patient.Name</span></p>
+                <p><strong>Appointment Date:</strong> <span>@item.SelectedDay.ToString()</span></p>
+                <p><strong>Appointment Time:</strong> <span>@item.SelectedDay.ToString()</span></p>
+                <p><strong>Reason for Visit:</strong></p>
+                <p class="reason-for-visit">@item.ReasonForVisit</p>
+                <p><strong>Status:</strong> <span class="appointment-status">@item.Status</span></p>
+            </div>
+        </div>
+    }
+</div>

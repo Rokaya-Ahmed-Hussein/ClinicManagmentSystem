@@ -1,0 +1,43 @@
+﻿@model Clinic_Managment_System.Viewmodel.DoctorProfileViewModel
+
+<h2>Complete Doctor Profile</h2>
+
+<form asp-action="CompleteDoctorProfile" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="ApplicationUserId" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" required />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Specialty" class="form-label"></label>
+        <select asp-for="Specialty" asp-items="ViewBag.Specialties" class="form-control" required>
+            <option value="">Select a Specialty</option>
+        </select>
+        <span asp-validation-for="Specialty" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ClinicID" class="form-label"></label>
+        <select asp-for="ClinicID" asp-items="ViewBag.Clinics" class="form-control" required>
+            <option value="">Select a Clinic</option>
+        </select>
+        <span asp-validation-for="ClinicID" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Profile</button>
+</form>
